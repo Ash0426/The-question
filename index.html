@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Adi</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--sky1:#2b1b4a;--sky2:#5b3d8f;--ink:#fff6ef;--soft:#d6c9ff;--peach:#ffd2c4;--mint:#9be8d0;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box}
+body{margin:0;height:100%;font-family:'Nunito',system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--sky1),var(--sky2) 70%,#c27fb0);overflow:hidden}
+#sky{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 3s ease-in-out infinite}
+@keyframes tw{50%{opacity:.2;transform:scale(.6)}}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;animation:up linear forwards}
+@keyframes up{to{transform:translateY(-110vh);opacity:0}}
+main{position:relative;height:100%;display:flex;align-items:center;justify-content:center;padding:20px 20px 84px}
+.step{display:none;flex-direction:column;align-items:center;text-align:center;width:min(540px,100%);max-height:100%}
+.step.on{display:flex;animation:fade .8s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+h1{font-size:clamp(30px,7.5vw,44px);margin:6px 0 8px;font-weight:700}
+.sub{margin:0 0 24px;color:var(--soft);font-size:18px}
+.btn{font:inherit;font-weight:700;font-size:17px;border:0;border-radius:999px;padding:11px 30px;background:var(--peach);color:#4a2147;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:scale(1.05)}
+.btn:active{transform:scale(.96)}
+.btn:focus-visible,.opt:focus-visible,.text:focus-visible,.music:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.text{overflow-y:auto;text-align:left;line-height:1.7;font-size:17px;margin-bottom:20px;max-height:calc(100% - 140px);padding:28px 24px;border-radius:26px;background:#ffffff14;border:1px solid #ffffff2e;scrollbar-width:none;-ms-overflow-style:none}
+.text::-webkit-scrollbar{display:none}
+.text p{margin:0 0 14px}
+.text ul{margin:0 0 14px;padding:0;list-style:none}
+.text li{padding-left:28px;margin-bottom:3px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-12 -12 24 24'%3E%3Cg fill='%23fff'%3E%3Cellipse cx='0' cy='-7' rx='2.6' ry='5'/%3E%3Cellipse cx='0' cy='-7' rx='2.6' ry='5' transform='rotate(45)'/%3E%3Cellipse cx='0' cy='-7' rx='2.6' ry='5' transform='rotate(90)'/%3E%3Cellipse cx='0' cy='-7' rx='2.6' ry='5' transform='rotate(135)'/%3E%3Cellipse cx='0' cy='-7' rx='2.6' ry='5' transform='rotate(180)'/%3E%3Cellipse cx='0' cy='-7' rx='2.6' ry='5' transform='rotate(225)'/%3E%3Cellipse cx='0' cy='-7' rx='2.6' ry='5' transform='rotate(270)'/%3E%3Cellipse cx='0' cy='-7' rx='2.6' ry='5' transform='rotate(315)'/%3E%3C/g%3E%3Ccircle r='4' fill='%23ffd54f'/%3E%3C/svg%3E") no-repeat 0 .35em/18px 18px}
+.label{font-family:'Caveat',cursive;font-weight:600;font-size:clamp(28px,7vw,36px);margin:0 0 12px;color:var(--peach)}
+.meadow div{position:absolute;bottom:-4px;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
+.meadow i{display:block;width:3px;height:var(--h);background:#7fcf9f;margin:0 auto;border-radius:2px}
+.meadow svg{display:block;margin-bottom:-6px}
+@keyframes sway{50%{transform:rotate(var(--r))}}
+.float{position:absolute;bottom:-40px;animation:up linear forwards}
+.poem{font-family:'Caveat',cursive;font-size:24px;line-height:1.45}
+.mascot{width:130px;margin-bottom:6px;animation:bob 4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.eye{transform-box:fill-box;transform-origin:center;animation:blink 5s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.tear{opacity:0;transition:opacity .3s}
+.sad .tear{opacity:1}
+.hop{animation:hop .6s ease-in-out infinite}
+@keyframes hop{50%{transform:translateY(-22px)}}
+.ask{font-size:clamp(28px,6.5vw,38px);line-height:1.2;margin:0}
+.opts{display:flex;gap:30px;align-items:center;justify-content:center;margin-top:40px;min-height:70px}
+.opt{display:flex;align-items:center;gap:12px;font:inherit;font-weight:700;font-size:21px;border:0;background:transparent;color:var(--ink);padding:10px 14px;cursor:pointer}
+.opt i{width:26px;height:26px;border:2px solid var(--peach);border-radius:8px;display:grid;place-items:center;font-style:normal;font-size:16px;line-height:1;color:var(--peach)}
+#yes{transform:scale(var(--s,1));transition:transform .35s cubic-bezier(.3,1.4,.5,1);position:relative;z-index:5}
+#no{z-index:20;transition:left .25s,top .25s}
+#no.run{position:fixed}
+.music{display:none;position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;z-index:30;width:42px;height:42px;border-radius:50%;border:1px solid #ffffff44;background:#ffffff1a;color:var(--ink);font-size:20px;cursor:pointer;place-items:center;transition:opacity .2s}
+.music.show{display:grid}
+.music.off{opacity:.5}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<audio id="song" src="ikaw%20na%20yan.mp3" loop preload="auto"></audio>
+<button class="music" id="mus" aria-label="Pause or play music">&#9834;</button>
+<main>
+ <section class="step on" id="s0">
+  <div class="mascot"></div>
+  <h1>for Adi</h1>
+  <p class="sub">I wrote you something.</p>
+  <button class="btn" data-next="1">Open</button>
+ </section>
+
+ <section class="step" id="s1">
+  <h2 class="label">The letter for that one girl</h2>
+  <div class="text" tabindex="0">
+   <p>Good morning, baby! yan di na siya hello, bading. I gotta apologize for how i reacted yesterday, i know you don't care but still. The idea of someone having me like this is honestly scary cause bro you literally heard me cry and not even in the light way HAHAHHHAHAHA. I guess being this vulnerable makes me nervous and it kinda gets to my head. I trust you completely and that's why i know even when i'm scared that i can still let my guard down.</p>
+   <p>Dude, alam mo naman ata that you were only supposed to be a fling right? parang nasabi kona HAAHAHHAHAH but i didn't think it would lead to this kasi akala ko ba you didn't need anyone? HAHAHAHAHHA pero i'm glad things turned out like this kasi nga i have. Thankyou for making days feel lighter, even when dika ok you still stay by me. psychiatrist nalang natin isat isa para tipid tayo, bebe. I don't always have the words to comfort you, so please let me replace it by just staying by you. hm but i gotta say thankyou</p>
+   <ul>
+    <li>thank you for choosing me</li>
+    <li>thank you for not judging me</li>
+    <li>thank you kasi pareho masama ugali natin</li>
+    <li>thank you for making me smile even if dimo sadya</li>
+    <li>thank you for coming into my life</li>
+    <li>thank you for simply being mine</li>
+   </ul>
+   <p>if i spent my time telling you how grateful i am to have you, baka magka sampong anak na tayo. I'm so glad I played valorant that day kasi nandun lang pala future dragon wife ko. Sorry nalang kung nireto ko sa iba pero saakin pala hulog hehehehe. baby, honestly a relationship doesn't seem that scary with you. Takot lang ako baka kasi you'll regret being with me or somehow i might screw it up kasi i have that tendency. kita mo naman na bigla ako tumatahimik baka hays HAHAHAHHAHA. sorry i really do overthink a lot. pero sa totoo lang the thought of asking you to be my girlfriend has already crossed my mind countless times pero pinipigilan ko lang cause ewan. i guess takot talaga ako mawala ka kasi di na siya sa commitment eh, cause i'm already so committed to only you. You took the nickname "ADI" and truly embodied the definition. you truly are my blessing in life.</p>
+  </div>
+  <button class="btn" data-next="2">Next</button>
+ </section>
+
+ <section class="step" id="s2">
+  <h2 class="label">the poem i didn't know i was writing</h2>
+  <div class="text poem" tabindex="0">
+   <p>I’ve never been stable in this life, nor am I sure I ever will,<br>The thought of someone loving me feels so surreal.<br>The doubts inside my mind are loud,<br>What if you wake up and step out of our cloud?</p>
+   <p>The cloud we built just for us,<br>Our little world built purely on trust.<br>I’ve never let someone in this deep,<br>Maybe I just like having a promise to keep.</p>
+   <p>I want to be seen only by you,<br>Where the truest parts of me come into view.<br>The expectations of others make me drown,<br>But with you, my heart finally settles down.</p>
+   <p>It’s easy in a way that feels natural,<br>I can’t believe I ever thought this was casual.<br>I’ve never smiled and cried so much with one person,<br>I guess I found my only exception.</p>
+   <p>The smile I get at the mere thought of you,<br>And the tears that form because I know I love you.<br>Loving someone this deeply makes me feel uneasy,<br>A gentle fear that washes over me completely.</p>
+   <p>Uneasy because I know I’ll never let go,<br>Why would I ever choose to leave my home?<br>I guess it’s true when you love someone, you finally see:<br>A brand new version of who you can be.</p>
+   <p>Someone who can be no one and everything all at once,<br>Without the constant fear that you'll leave when we're done.<br>Commitment used to terrify me,<br>Given all the history I have with everybody.</p>
+   <p>But with you, I know that I’m ready,<br>I’ve already given you my heart, safe and steady.<br>Call it cheesy, but I still want to ask properly:<br>In this crazy life, will you stand by side?</p>
+   <p>In my unstable days, will you still put up a fight?<br>On the days I forget who I am,<br>Will you hold my hand and help me stand?<br>All these questions lead to the very end:</p>
+   <p>Will you do me the honor of becoming my girlfriend?</p>
+  </div>
+  <button class="btn" data-next="3">Next</button>
+ </section>
+
+ <section class="step" id="q">
+  <div class="mascot" id="qm"></div>
+  <h1 class="ask">Adi, will you be my girlfriend?</h1>
+  <div class="opts">
+   <button class="opt" id="yes"><i>&#10003;</i>Yes</button>
+   <button class="opt" id="no"><i></i><span id="nol">No</span></button>
+  </div>
+ </section>
+
+ <section class="step" id="win">
+  <div class="mascot hop" id="wm" style="animation-name:hop"></div>
+  <h1>She said yes.</h1>
+  <p class="sub">Hello, girlfriend.</p>
+ </section>
+</main>
+
+<script>
+const DRAGON=`<svg viewBox="0 0 130 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<g fill="#fff"><ellipse cx="65" cy="104" rx="46" ry="12"/><circle cx="36" cy="100" r="14"/><circle cx="64" cy="94" r="17"/><circle cx="94" cy="100" r="14"/></g>
+<ellipse cx="26" cy="62" rx="14" ry="9" fill="#d6c9ff" transform="rotate(-25 26 62)"/>
+<ellipse cx="104" cy="62" rx="14" ry="9" fill="#d6c9ff" transform="rotate(25 104 62)"/>
+<path d="M44 34 L50 14 L60 32Z M86 34 L80 14 L70 32Z" fill="#ffd2c4"/>
+<ellipse cx="65" cy="68" rx="40" ry="34" fill="#9be8d0"/>
+<g transform="translate(65 36) rotate(12)"><g fill="#fff"><ellipse cy="-5" rx="2" ry="3.6" transform="rotate(0)"/><ellipse cy="-5" rx="2" ry="3.6" transform="rotate(45)"/><ellipse cy="-5" rx="2" ry="3.6" transform="rotate(90)"/><ellipse cy="-5" rx="2" ry="3.6" transform="rotate(135)"/><ellipse cy="-5" rx="2" ry="3.6" transform="rotate(180)"/><ellipse cy="-5" rx="2" ry="3.6" transform="rotate(225)"/><ellipse cy="-5" rx="2" ry="3.6" transform="rotate(270)"/><ellipse cy="-5" rx="2" ry="3.6" transform="rotate(315)"/></g><circle r="2.8" fill="#ffd54f"/></g>
+<ellipse cx="65" cy="80" rx="23" ry="19" fill="#e9fff6"/>
+<ellipse class="eye" cx="49" cy="62" rx="4.5" ry="5.5" fill="#3a2663"/>
+<ellipse class="eye" cx="81" cy="62" rx="4.5" ry="5.5" fill="#3a2663"/>
+<ellipse cx="38" cy="72" rx="7" ry="4" fill="#ff8fb1" opacity=".6"/>
+<ellipse cx="92" cy="72" rx="7" ry="4" fill="#ff8fb1" opacity=".6"/>
+<path d="M58 72 q7 7 14 0" stroke="#3a2663" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<path class="tear" d="M87 66 q-5 9 0 12 q5 -3 0 -12Z" fill="#8fd3ff"/>
+</svg>`;
+document.querySelectorAll('.mascot').forEach(m=>m.innerHTML=DRAGON);
+const DS=(z)=>`<svg width="${z}" height="${z}" viewBox="-12 -12 24 24"><g fill="#fff">${[0,45,90,135,180,225,270,315].map(a=>`<ellipse cy="-7" rx="2.6" ry="5" transform="rotate(${a})"/>`).join('')}</g><circle r="4" fill="#ffd54f"/></svg>`;
+const sky=document.getElementById('sky');
+const mead=document.createElement('div');mead.className='meadow';sky.appendChild(mead);
+const cnt=Math.round(innerWidth/70);
+for(let i=0;i<cnt;i++){const d=document.createElement('div');const h=14+Math.random()*42,z=24+Math.random()*14;d.style.cssText=`left:${(i+.3+Math.random()*.4)/cnt*100}%;--h:${h}px;--r:${(Math.random()<.5?-1:1)*(3+Math.random()*4)}deg;animation-delay:-${Math.random()*5}s`;d.innerHTML=DS(z)+'<i></i>';mead.appendChild(d)}
+for(let i=0;i<40;i++){const s=document.createElement('div');s.className='star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*70}%;animation-delay:${Math.random()*3}s`;sky.appendChild(s)}
+function sparks(n){
+ for(let i=0;i<24;i++){const f=document.createElement('div');f.className='float';f.innerHTML=DS(20+Math.random()*22);f.style.left=Math.random()*100+'%';f.style.animationDuration=(4+Math.random()*4)+'s';f.style.animationDelay=(Math.random()*2.5)+'s';sky.appendChild(f);setTimeout(()=>f.remove(),11000)}
+ for(let i=0;i<n;i++){const h=document.createElement('div');h.className='spark';h.style.cssText=`left:${Math.random()*100}%;top:100%;animation-duration:${3+Math.random()*4}s;animation-delay:${Math.random()*2}s`;sky.appendChild(h);setTimeout(()=>h.remove(),9000)}
+}
+
+/* music: starts on the first tap of "Open" (browsers block autoplay) */
+const song=document.getElementById('song'),mus=document.getElementById('mus');
+function playSong(){
+ song.volume=.6;
+ const p=song.play();
+ if(p&&p.catch)p.catch(()=>mus.classList.add('off'));
+ mus.classList.add('show');
+}
+mus.onclick=()=>{
+ if(song.paused){song.play();mus.classList.remove('off')}
+ else{song.pause();mus.classList.add('off')}
+};
+
+function go(id){document.querySelectorAll('.step').forEach(e=>e.classList.remove('on'));document.getElementById(id).classList.add('on')}
+const ids=['s0','s1','s2','q','win'];
+document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>{
+ if(b.dataset.next==='1')playSong();
+ go(ids[+b.dataset.next]);
+});
+
+const yes=document.getElementById('yes'),no=document.getElementById('no'),nol=document.getElementById('nol'),qm=document.getElementById('qm');
+const lines=['No','Are you sure?','Think again','Please?','Adi.','Last chance',"Okay now you're just playing"];
+let n=0;
+function dodge(){
+ no.classList.add('run');
+ const w=no.offsetWidth,h=no.offsetHeight;
+ no.style.left=Math.max(8,Math.random()*(innerWidth-w-16))+'px';
+ no.style.top=Math.max(8,Math.random()*(innerHeight-h-16))+'px';
+}
+function push(e){e.preventDefault();n++;yes.style.setProperty('--s',Math.min(1+n*.45,9));nol.textContent=lines[n%lines.length];qm.classList.add('sad');dodge()}
+no.addEventListener('pointerdown',push);
+no.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')dodge()});
+no.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')push(e)});
+no.addEventListener('click',e=>e.preventDefault());
+yes.onclick=()=>{no.classList.remove('run');go('win');sparks(50)};
+</script>
+</body>
+</html>
